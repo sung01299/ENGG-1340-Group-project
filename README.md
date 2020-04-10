@@ -5,3 +5,8 @@
 
 ## game description
 ## list of features/functions
+1. Generation of random game sets or events
+2. Data structures for storing game status
+3. Dynamic memory management
+4. File input/output
+5. Program codes in multiple files
