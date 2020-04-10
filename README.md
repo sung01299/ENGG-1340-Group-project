@@ -12,6 +12,8 @@ After reading an old book the player found at home, the player goes on a journey
 
 Before the start of the game, the game will ask the player to name the character. There will be a total of 6 boss battles, including the final guardian. After every stage, the player will be able to go to a new town, so therefore, the player can unlock five different towns. At the towns, players can trade with the town people the unique parts they have earned from battles to gold and gold can be used to upgrade his weapon and armor.
 
+During each battle with monsters, the player can choose an action among few options (e.g. use first skill, use second skill, etc.) Player and monster take turn alternatively to attack. If player kills monsters, monsters may drop golds and items which can be used to purchase or exchange from the town. Or if player's health becomes below zero, player dies and game ends.  
+
 ## List of Features/Functions
 1. Generation of random game sets or events
    - In battles, the player will deal a fixed amount of damage to his/her enemy based on the weapon the player is using. However, sometimes the player may miss the attack, or instead do a critical damage to the enemy. This will be decided randomly and the libraries <stdlib.h> will be included to use the rand() and srand() funtions to randomly generate such situations.
