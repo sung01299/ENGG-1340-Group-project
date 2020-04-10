@@ -4,7 +4,7 @@
 - Sung HUH (UID: 3035660744)
 
 ## Game Description
-## List Of Features/Functions
+## List of Features/Functions
 1. Generation of random game sets or events
 2. Data structures for storing game status
 3. Dynamic memory management
