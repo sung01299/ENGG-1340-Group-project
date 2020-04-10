@@ -12,10 +12,10 @@ After reading an old book the player found at home, the player goes on a journey
 
 ## List of Features/Functions
 1. Generation of random game sets or events
-
-In battles, the player will deal a fixed amount of damage to his/her enemy based on the weapon the player is using. However, sometimes the player may miss the attack, or instead do a critical damage to the enemy. This will be decided randomly and the libraries <stdlib.h> will be included to use the rand() and srand() funtions to randomly generate such situations.
+   - In battles, the player will deal a fixed amount of damage to his/her enemy based on the weapon the player is using. However, sometimes the player may miss the attack, or instead do a critical damage to the enemy. This will be decided randomly and the libraries <stdlib.h> will be included to use the rand() and srand() funtions to randomly generate such situations.
 
 2. Data structures for storing game status
+   - While user plays a game, the basic information of a player including name, attack, defence stats and obtained items (inventory) should be stored in data structures. For the basic information,  it will be stored in struct, and data of inventory will be sotred in 2D array.
 
 3. Dynamic memory management
 
