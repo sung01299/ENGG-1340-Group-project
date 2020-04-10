@@ -23,4 +23,4 @@ After reading an old book the player found at home, the player goes on a journey
    - Players can save the game and reload their save files to continue their game. If it is their first time saving their progress, the game save file will be saved in a new .txt file. If it is not their first time saving their progress, it will overwrite the original save file. By loading these saved .txt files, players can reaload their progress. These could be done including the library fstream. 
 
 5. Program codes in multiple files
-
+   - Program will be consists of multiple of .cpp and .h files. Functions used in main() function will be written into separate files. Finally, we will use makefile in Linux to compile files and make programe executable.
