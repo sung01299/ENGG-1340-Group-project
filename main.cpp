@@ -1,8 +1,14 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 #include <string>
 using namespace std;
 
 void battleenemy(){
+    srand(time(NULL));
+    int missrate, critrate;
+    missrate = ??;
+    critrate = ??;
     while (pinfo.maxHealth > 0 && einfo.ehealth > 0){
         int answer;
         string retur;
@@ -13,14 +19,25 @@ void battleenemy(){
             cin >> answer;
         }
         if (answer == "0"){
-            cout << "Player basic attacks enemy" << endl;
-            einfo.ehealth -= pinfo.basicAttack;
+            if (rand()%100<=missrate){
+                cout << "Player misses basic attack!" << endl;
+            }
+            else {
+                if (rand()%100<=critrate){
+                    cout << "Player deals critical hit!" << endl;
+                    einfo.health -= (2*pinfo.basicAttack);
+                }
+                else {
+                    cout << "Player basic attacks enemy" << endl;
+                    einfo.ehealth -= pinfo.basicAttack;
+                }
+            }
             cout << "Enemy health remaining: " << einfo.ehealth << endl;
             cout << "Enemy attacks player" << endl;
             pinfo.maxHealth -= einfo.eattack;
             cout << "Player health remaining: " << pinfo.maxHealth << endl;
         }
-        else if (answer == "1"){
+        else if (answer == "1"){ 
             cout << "Player uses skill to enemy" << endl;
             einfo.ehealth -= sinfo.damage;
             cout << "Enemy health remaining: " << einfo.ehealth << endl;
@@ -177,6 +194,16 @@ int main()
     pinfo.pname = name;
     cout << endl << "????: My apologies for not introducing myself first." << endl;
     cout << "Noin: The name is Noin Arak, but you may call me Noin." << endl;
+    
+    
+    //set player's stat
+    pinfo.maxHealth=???;
+    pinfo.currentHealth=???;
+    pinfo.pdefense=???;
+    pinfo.basicAttack=???;
+    pinfo.invenGold=???;
+    pinfo.currentLoc=???;
+    
 
     return 0;
 }
