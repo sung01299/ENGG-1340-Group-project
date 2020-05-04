@@ -2,6 +2,52 @@
 #include <string>
 using namespace std;
 
+void battleenemy{
+    while (pinfo.maxHealth > 0 && einfo.ehealth > 0){
+        int answer;
+        string retur;
+        cout << "To use basic attack, please type \"0\", to use skill, please type \"1\"." << endl;
+        cin >> answer;
+        while (answer != "0" && answer != "1"){
+            cout << "***Invalid input. Please type \"0\" or \"1\" to select.***" << endl;
+            cin >> answer;
+        }
+        if (answer == "0"){
+            cout << "Player basic attacks enemy" << endl;
+            einfo.ehealth -= pinfo.basicAttack;
+            cout << "Enemy health remaining: " << einfo.ehealth << endl;
+            cout << "Enemy attacks player" << endl;
+            pinfo.maxHealth -= einfo.eattack;
+            cout << "Player health remaining: " << pinfo.maxHealth << endl;
+        }
+        else if (answer == "1"){
+            cout << "Player uses skill to enemy" << endl;
+            einfo.ehealth -= sinfo.damage;
+            cout << "Enemy health remaining: " << einfo.ehealth << endl;
+            cout << "Enemy attacks player" << endl;
+            pinfo.maxHealth -= einfo.eattack;
+            cout << "Player health remaining: " << pinfo.maxHealth << endl;
+        }
+        
+        if (pinfo.maxHealth <= 0){
+            cout << "You died." << endl;
+            cout << "To return to main menu, please type \"return\"." << endl;
+            cin >> retur;
+            while (retur != "return"){
+                cout << "***Invalid input. Please type \"return\" to select.***" << endl;
+                cin >> retur;
+            }
+            if (retur == "return"){
+                //code to return main menu
+            }
+        }
+        else if (einfo.ehealth <=0){
+            cout << "You defeated enemy." << endl;
+            cout << "You can now move on to next village." << endl;
+        }
+    }
+}
+
 int main()
 {
 
