@@ -6,7 +6,7 @@ using namespace std;
 
 void battleenemy(){
     srand(time(NULL));
-    int anwer, retur, missrate, critrate;
+    int answer, retur, missrate, critrate;
     missrate = ??;
     critrate = ??;
     while (pinfo.maxHealth > 0 && einfo.ehealth > 0){
