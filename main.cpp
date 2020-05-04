@@ -6,12 +6,10 @@ using namespace std;
 
 void battleenemy(){
     srand(time(NULL));
-    int missrate, critrate;
+    int anwer, retur, missrate, critrate;
     missrate = ??;
     critrate = ??;
     while (pinfo.maxHealth > 0 && einfo.ehealth > 0){
-        int answer;
-        string retur;
         cout << "To use basic attack, please type \"0\", to use skill, please type \"1\"." << endl;
         cin >> answer;
         while (answer != "0" && answer != "1"){
