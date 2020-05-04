@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-void battleenemy{
+void battleenemy(){
     while (pinfo.maxHealth > 0 && einfo.ehealth > 0){
         int answer;
         string retur;
