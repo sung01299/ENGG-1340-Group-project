@@ -30,7 +30,7 @@ void tradeandupgrade(){
             cout << "Player can upgrade armor with " << /*amount of increase (health)*/ << " by spending " << /*price to upgrade*/ << ". To upgrade, type \"1\"." << endl;
             cin >> answer3;
             if (answer3=="1"){
-                pinfo.pdefense += /*amount of increase (health)*/;
+                pinfo.maxHealth += /*amount of increase (health)*/;
                 pinfo.invenGold -= /*price to upgrade*/;
                 cout << "Player's health increased to " << pinfo.pdefense << endl;
                 cout << "Player currently has " << pinfo.invenGold << " gold." << endl;
