@@ -2,176 +2,18 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
+#include "structs.h"
+#include "name.h"
+#include "battleenemy.h"
+#include "trade.h"
 using namespace std;
 
-/////////////////////////battle/////////////////////////////////
-
-void battleenemy(//enemy#){
-    srand(time(NULL));
-    int answer, retur, missrate, critrate;
-    missrate = ??;
-    critrate = ??;
-    while (pinfo.maxHealth > 0 && einfo.ehealth > 0){
-        cout << "To use basic attack, please type \"0\", to use skill, please type \"1\"." << endl;
-        cin >> answer;
-        while (answer != "0" && answer != "1"){
-            cout << "***Invalid input. Please type \"0\" or \"1\" to select.***" << endl;
-            cin >> answer;
-        }
-        if (answer == "0"){
-            if (rand()%100<=missrate){
-                cout << "Player misses basic attack!" << endl;
-            }
-            else {
-                if (rand()%100<=critrate){
-                    cout << "Player deals critical hit!" << endl;
-                    einfo.health -= (2*pinfo.basicAttack);
-                }
-                else {
-                    cout << "Player basic attacks enemy" << endl;
-                    einfo.ehealth -= pinfo.basicAttack;
-                }
-            }
-            cout << "Enemy health remaining: " << einfo.ehealth << endl;
-            cout << "Enemy attacks player" << endl;
-            pinfo.maxHealth -= einfo.eattack;
-            cout << "Player health remaining: " << pinfo.maxHealth << endl;
-        }
-        else if (answer == "1"){ 
-            cout << "Player uses skill to enemy" << endl;
-            einfo.ehealth -= sinfo.damage;
-            cout << "Enemy health remaining: " << einfo.ehealth << endl;
-            cout << "Enemy attacks player" << endl;
-            pinfo.maxHealth -= einfo.eattack;
-            cout << "Player health remaining: " << pinfo.maxHealth << endl;
-        }
-        
-        if (pinfo.maxHealth <= 0){
-            cout << "Player died." << endl;
-            cout << "To return to main menu, please type \"return\"." << endl;
-            cin >> retur;
-            while (retur != "return"){
-                cout << "***Invalid input. Please type \"return\" to select.***" << endl;
-                cin >> retur;
-            }
-            if (retur == "return"){
-                //code to return main menu
-            }
-        }
-        else if (einfo.ehealth <=0){
-            cout << "Player defeated enemy." << endl;
-            cout << "Enemy dropped its unique part" << endl;
-            
-            cout << "Player can now move on to next town." << endl;
-        }
-    }
-}
-
-    
-///////////////////trade&upgrade//////////////////////
-    
-    
-void tradeandupgrade(//enemy#){
-    int answer0, answer1, answer2, answer3;
-    cout << "Player can trade the unique parts or upgrade weapon and armor." << endl;
-    cout << "To trade the unique parts with gold, type \"1\", to upgrade weapon, type \"2\", to upgrade armor, type \"3\", to exit, type \"0\" << endl;
-    cin >> answer0;
-    while (answer0 != 0){
-        if (answer0 == "1"){
-            cout << "You can trade the part obtained from previous battle with " << /*value of monster part*/ << ". To trade, type \"1\"." << endl;
-            cin >> answer1;
-            if (answer1 == "1"){
-                pinfo.invenGold += partvalue;
-                cout << "Player currently has " << pinfo.invenGold << " gold." << endl;
-            }
-        }
-        else if (answer0 == "2"){
-            cout << "Player can upgrade weapon with " << /*amount of increase (attack damage)*/ << " by spending " << /*price to upgrade*/ << ". To upgrade, type \"1\"." << endl;
-            cin >> answer2;
-            if (answer2=="1"){
-                pinfo.basicAttack += /*amount of increase (attack damage)*/;
-                pinfo.invenGold -= /*price to upgrade*/;
-                cout << "Player's attack damage increased to " << pinfo.basicAttack << endl;
-                cout << "Player currently has " << pinfo.invenGold << " gold." << endl;
-            }
-        }
-        else if (answer0 == "3"){
-            cout << "Player can upgrade armor with " << /*amount of increase (health)*/ << " by spending " << /*price to upgrade*/ << ". To upgrade, type \"1\"." << endl;
-            cin >> answer3;
-            if (answer3=="1"){
-                pinfo.pdefense += /*amount of increase (health)*/;
-                pinfo.invenGold -= /*price to upgrade*/;
-                cout << "Player's health increased to " << pinfo.pdefense << endl;
-                cout << "Player currently has " << pinfo.invenGold << " gold." << endl;
-            }
-        }
-    }
-    cout << "Player exits trademarket." << endl;
-}
-    
 int main()
 {
-
-    /* This struct is used to store player's information
-        pname for player's name
-        maxHealth for player's health
-        currentHealth for player's current health
-        basicAttack for the basic amount of damage the player can deal;
-        pdefense for player's current health
-        invenGold for amound of gold the player has
-        currentLoc for current location of the player
-        inven for player's inventory and the maximum number of items the player can hold is 5
-        obtainedSkill for the skills the player has and the maximum number of skills players can use*/
-    struct PlayerInfo {
-        string pname;
-        int maxHealth;
-        int currentHealth;
-        int pdefense;
-        int basicAttack;
-        int invenGold;
-        int currentLoc;
-        string inven[5];
-        string obtainedSkill[3];
-    };
-
-    /* This struct is used to store enemy information 
-        ename for enemy's name
-        ehealth for enemy's health
-        edefense for enemy's defense
-        egold for the amount of gold player could ontain from defeating it */
-    struct EnemyInfo {
-        string ename;
-        int ehealth;
-        int edefense;
-        int egold;
-    };
-
-    /* This struct is used to store item information 
-        itemID for ID of the item
-        itemName for name of the item
-        itemPrice for price of the item */
-    struct ItemInfo {
-        string itemID;
-        string itemName;
-        int itemPrice;
-    };
-
-    /* This struct is used to store skill information
-        skillID for ID of the skill
-        skillName for name of the skill
-        damage for the amount of damage the skill can deal
-        maxTimes for the number of times the skill could be used */
-    struct SkillInfo {
-        string skillID;
-        string skillName;
-        int damage;
-        int maxTimes;
-    };
-
     /* variable inputline stores the input from the user
        variable name stores the name of the player/character
        variable answer stores the choice (e.g. 1/0) from the player */
-    string inputLine, name, answer;
+    string inputLine, answer;
 
     /* Main start menu */
     cout << "~~~~~~~~~~ MYSTERIOUS YYETNAL ~~~~~~~~~~" << endl;
@@ -185,60 +27,26 @@ int main()
         cin >> inputLine;
     }
 
-    /* Getting name from the player */
-    cout << endl << "Please enter your name: ";
-    cin >> name;
-    cout << endl << "????: Hello, " << name << "." << endl;
-    cout << "1 - How do you know me? Who are you?" << endl << "0 - That is not my name." << endl;
-    cout << "Type \"1\" or \"0\" to select." << endl;
-    cin >> answer;
-
-    /* If the player inputs an invalid input, it will ask the player to input again */
-    while (answer != "1" && answer != "0") {
-        cout << "***Invalid input. Please type \"1\" or \"0\" to select.***" << endl;
-        cin >> answer;
-    }
-
-    /* If the player answers "2", it will ask the player to enter their name again.*/
-    if (answer == "0") {
-        cout << endl << "????: Then may I ask what your name is?" << endl;
-        cout << "Please enter your name: ";
-        cin >> name;
-        cout << endl << "????: Is " << name << " your name?" << endl << "Type \"1\" for yes or \"0\" for no." << endl;
-        cin >> answer;
-
-        /* If the player inputs an invalid input, it will ask the player to input a valid input (i.e., 1 or 0) again */
-        while (answer != "1" && answer != "0") {
-            cout << "***Invalid input. Please type \"1\" or \"0\" to answer.***" << endl;
-            cin >> answer;
-        }
-
-        /* If the input name is still not what the player wants, the player can input it again until the player is satisfied. */
-        if (answer == "0") {
-            while (answer == "0") {
-                cout << endl << "????: May I ask again what your name is?" << endl;
-                cout << "Please enter your name: ";
-                cin >> name;
-                cout << endl << "Is " << name << " your name?" << endl << "Type \"1\" for yes or \"0\" for no." << endl;
-                cin >> answer;
-
-                /* If the player inputs an invalid input, it will ask the player to input a valid input (i.e., 1 or 0) again */
-                while (answer != "1" && answer != "0") {
-                    cout << "***Invalid input. Please type \"1\" or \"0\" to answer.***" << endl;
-                    cin >> answer;
-                }
-                if (answer == "1") {
-                    cout << endl << "????: Great!";
-                }
-            }
-        }
-    }
-
     PlayerInfo pinfo;
-    pinfo.pname = name;
-    cout << endl << "????: My apologies for not introducing myself first." << endl;
-    cout << "Noin: The name is Noin Arak, but you may call me Noin." << endl;
+    askingname();
     
+    cout << endl << "*You wake up and you see a paper lying on the floor*" << endl << "Type \"read\" to read the paper" << endl;
+    cin >> inputLine;
+    
+    cout << endl << "\"The sword is hidden somewhere in the mountains, near the town of Aran.\"" << endl;
+
+    cout << endl << pinfo.pname << ": That's weird. I'm sure this wasn't here before I went to sleep." << endl;
+    cout << pinfo.pname << ": But this journey sounds interesting." << endl;
+
+    cout << endl << "*You take your sword and leave the house*" << endl;
+
+    cout << "*Your journey to the town of Aran starts*" << endl;
+
+    cout << endl << "* While on your way, you encounter the monster, Asaand it suddenly charges on you *" << endl;
+
+    battleenemy();
+    tradeandupgrade(//something);
+
     
     //set player's stat
     pinfo.maxHealth=???;
