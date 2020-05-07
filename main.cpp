@@ -69,11 +69,15 @@ int main()
         trade(bossnum);
         decreasemapsize(bossnum);
         bossnum+=1;
+        
+    if (decreasemapsize.size() == 0){
+        cout << Fight with final boss left << endl;
+        battleenemy(finalboss);
+        if (//player wins){
+            cout << congratulations! you defeated evey bosses! << endl;
     
     }
-    int finalboss=6; 
-    //final boss
-    battleenemy(finalboss);
+    
     
     
 
