@@ -61,6 +61,18 @@ int main()
     pinfo.basicAttack=20;
     pinfo.invenGold=0;
     pinfo.currentLoc=0;
+    
+    
+    EnemyInfo firstboss;
+    EnemyInfo secondboss;
+    EnemyInfo tirdboss;
+    EnemyInfo fourthboss;
+    EnemyInfo fifthboss;
+    EnemyInfo finalboss;
+    
+    ItemInfo -----;
+    
+    SkillInfo ------;
         
     int bossnum=1;
     
