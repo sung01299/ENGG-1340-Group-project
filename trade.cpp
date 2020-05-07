@@ -9,6 +9,7 @@ void tradeandupgrade(){
     cin >> answer0;
     while (answer0 != 0){
         if (answer0 == "1"){
+            cout << "You entered trade market." << endl;
             cout << "You can trade the part obtained from previous battle with " << /*value of monster part*/ << ". To trade, type \"1\"." << endl;
             cin >> answer1;
             if (answer1 == "1"){
