@@ -2,14 +2,23 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
+#include <vector>
 #include "structs.h"
 #include "name.h"
 #include "battleenemy.h"
 #include "trade.h"
 using namespace std;
 
+void decreasemapsize(int bossnum){
+    mapsize.resize(5-bossnum);
+}
+
 int main()
 {
+    vector<int> mapsize;
+    for (int i=5; i<=1; i--){
+        mapsize.push_back(i);
+    }
     /* variable inputline stores the input from the user
        variable name stores the name of the player/character
        variable answer stores the choice (e.g. 1/0) from the player */
@@ -44,17 +53,28 @@ int main()
 
     cout << endl << "* While on your way, you encounter the monster, Asaand it suddenly charges on you *" << endl;
 
-    battleenemy();
-    tradeandupgrade(//something);
 
     
     //set player's stat
     pinfo.maxHealth=???;
     pinfo.currentHealth=???;
-    pinfo.pdefense=???;
     pinfo.basicAttack=???;
     pinfo.invenGold=???;
     pinfo.currentLoc=???;
+        
+    int bossnum=1;
+    
+    for (int k=0; k<5; k++){
+        battleenemy(bossnum);
+        trade(bossnum);
+        decreasemapsize(bossnum);
+        bossnum+=1;
+    
+    }
+    int finalboss=6; 
+    //final boss
+    battleenemy(finalboss);
+    
     
 
     return 0;
