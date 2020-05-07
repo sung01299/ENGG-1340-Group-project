@@ -56,11 +56,11 @@ int main()
 
     
     //set player's stat
-    pinfo.maxHealth=???;
-    pinfo.currentHealth=???;
-    pinfo.basicAttack=???;
-    pinfo.invenGold=???;
-    pinfo.currentLoc=???;
+    pinfo.maxHealth=100;
+    pinfo.currentHealth=100;
+    pinfo.basicAttack=20;
+    pinfo.invenGold=0;
+    pinfo.currentLoc=0;
         
     int bossnum=1;
     
