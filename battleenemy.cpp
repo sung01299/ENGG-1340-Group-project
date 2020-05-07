@@ -7,8 +7,8 @@ using namespace std;
 void battleenemy(//enemy#){
     srand(time(NULL));
     int answer, retur, missrate, critrate;
-    missrate = ??;
-    critrate = ??;
+    missrate = 5;
+    critrate = 5;
     while (pinfo.maxHealth > 0 && einfo.ehealth > 0){
         cout << "To use basic attack, please type \"0\", to use skill, please type \"1\"." << endl;
         cin >> answer;
@@ -23,7 +23,7 @@ void battleenemy(//enemy#){
             else {
                 if (rand()%100<=critrate){
                     cout << "Player deals critical hit!" << endl;
-                    einfo.health -= (2*pinfo.basicAttack);
+                    einfo.ehealth -= (2*pinfo.basicAttack);
                 }
                 else {
                     cout << "Player basic attacks enemy" << endl;
