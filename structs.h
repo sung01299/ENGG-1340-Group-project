@@ -15,7 +15,6 @@ struct PlayerInfo {
     string pname;
     int maxHealth;
     int currentHealth;
-    int pdefense;
     int basicAttack;
     int invenGold;
     int currentLoc;
