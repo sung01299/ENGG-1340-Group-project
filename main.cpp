@@ -86,21 +86,20 @@ int main()
     SkillInfo sinfo;
     sinfo.damage=1.5*pinfo.basicAttack;
         
-    battleenemy(firstboss);
+    battleenemy();
     tradeandupgrade();
     pinfo.currentLoc+=1;
     
-    battleenemy(secondboss);
+    battleenemy();
     tradeandupgrade();
     pinfo.currentLoc+=1;
     
-    battleenemy(thirdboss);
+    battleenemy();
     tradeandupgrade();
     pinfo.currentLoc+=1;
     
-    battleenemy(finalboss);
+    battleenemy();
     
-    }
     
     
     
