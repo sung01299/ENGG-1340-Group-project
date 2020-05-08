@@ -86,15 +86,15 @@ int main()
     SkillInfo ------;
         
     battleenemy(firstboss);
-    trade(pinfo.currentLoc);
+    tradeandupgrade(pinfo.currentLoc);
     pinfo.currentLoc+=1;
     
     battleenemy(secondboss);
-    trade(pinfo.currentLoc);
+    tradeandupgrade(pinfo.currentLoc);
     pinfo.currentLoc+=1;
     
     battleenemy(thirdboss);
-    trade(pinfo.currentLoc);
+    tradeandupgrade(pinfo.currentLoc);
     pinfo.currentLoc+=1;
     
     battleenemy(finalboss);
