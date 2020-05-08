@@ -2,23 +2,14 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
-#include <vector>
 #include "structs.h"
 #include "name.h"
 #include "battleenemy.h"
 #include "trade.h"
 using namespace std;
 
-void decreasemapsize(int pinfo.currentLoc){
-    mapsize.resize(5-pinfo.currentLoc);
-}
-
 int main()
 {
-    vector<int> mapsize;
-    for (int i=4; i<=1; i--){
-        mapsize.push_back(i);
-    }
     /* variable inputline stores the input from the user
        variable name stores the name of the player/character
        variable answer stores the choice (e.g. 1/0) from the player */
@@ -80,7 +71,7 @@ int main()
         decreasemapsize(pinfo.currentLoc);
         pinfo.currentLoc+=1;
         
-    if (decreasemapsize.size() == 0){
+    if (pinto.currentLoc == 5){
         cout << Fight with final boss left << endl;
         battleenemy(pinfo.currentLoc);
         if (//player wins){
