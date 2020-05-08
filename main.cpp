@@ -29,7 +29,7 @@ int main()
     }
 
     PlayerInfo pinfo;
-    askingname();
+    askingName();
     
     cout << endl << "*You wake up and you see a paper lying on the floor*" << endl << "Type \"read\" to read the paper" << endl;
     cin >> inputLine;
@@ -83,7 +83,8 @@ int main()
     
     ItemInfo -----;
     
-    SkillInfo ------;
+    SkillInfo sinfo;
+    sinfo.damage=1.5*pinfo.basicAttack;
         
     battleenemy(firstboss);
     tradeandupgrade();
