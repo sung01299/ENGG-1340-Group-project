@@ -85,17 +85,19 @@ int main()
     
     SkillInfo ------;
         
+    battleenemy(firstboss);
+    trade();
+    pinfo.currentLoc+=1;
     
-    for (int k=0; k<4; k++){
-        battleenemy(name of monster);
-        trade(pinfo.currentLoc);
-        pinfo.currentLoc+=1;
-        
-    if (pinto.currentLoc == 5){
-        cout << Fight with final boss left << endl;
-        battleenemy(name of monster);
-        if (//player wins){
-            cout << congratulations! you defeated evey bosses! << endl;
+    battleenemy(secondboss);
+    trade();
+    pinfo.currentLoc+=1;
+    
+    battleenemy(thirdboss);
+    trade();
+    pinfo.currentLoc+=1;
+    
+    battleenemy(finalboss);
     
     }
     
