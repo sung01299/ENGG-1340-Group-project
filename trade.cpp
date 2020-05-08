@@ -24,21 +24,21 @@ void tradeandupgrade(int pinfo.currentLoc){
             }
         }
         else if (answer0 == "2"){
-            cout << "Player can upgrade weapon with " << /*amount of increase (attack damage)*/ << " by spending " << /*price to upgrade*/ << ". To upgrade, type \"1\"." << endl;
+            cout << "Player can upgrade weapon with " << 20*pinfo.currentLoc << " by spending " << 100*pinfo.currentLoc << ". To upgrade, type \"1\"." << endl;
             cin >> answer2;
             if (answer2=="1"){
-                pinfo.basicAttack += /*amount of increase (attack damage)*/;
-                pinfo.invenGold -= /*price to upgrade*/;
+                pinfo.basicAttack += 20*pinfo.currentLoc;
+                pinfo.invenGold -= 100*pinfo.currentLoc;
                 cout << "Player's attack damage increased to " << pinfo.basicAttack << endl;
                 cout << "Player currently has " << pinfo.invenGold << " gold." << endl;
             }
         }
         else if (answer0 == "3"){
-            cout << "Player can upgrade armor with " << /*amount of increase (health)*/ << " by spending " << /*price to upgrade*/ << ". To upgrade, type \"1\"." << endl;
+            cout << "Player can upgrade armor with " << 20*pinfo.currentLoc << " by spending " << 100*pinfo.currentLoc << ". To upgrade, type \"1\"." << endl;
             cin >> answer3;
             if (answer3=="1"){
-                pinfo.maxHealth += /*amount of increase (health)*/;
-                pinfo.invenGold -= /*price to upgrade*/;
+                pinfo.maxHealth += 20*pinfo.currentLoc;
+                pinfo.invenGold -= 100*pinfo.currentLoc;
                 cout << "Player's health increased to " << pinfo.pdefense << endl;
                 cout << "Player currently has " << pinfo.invenGold << " gold." << endl;
             }
