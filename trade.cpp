@@ -2,7 +2,7 @@
 #include "trade.h"
 using namespace std;
 
-void tradeandupgrade(){
+void tradeandupgrade(int pinfo.currentLoc){
     int answer0, answer1, answer2, answer3;
     cout << "Player can trade the unique parts or upgrade weapon and armor." << endl;
     cout << "To trade the unique parts with gold, type \"1\", to upgrade weapon, type \"2\", to upgrade armor, type \"3\", to exit, type \"0\"" << endl;
