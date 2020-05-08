@@ -264,21 +264,8 @@ bool battleenemy(int x){
             	cout << endl;
 			}    
         }
-        
-        if (pinfo.currentHealth <= 0){
-            cout << "Player died." << endl;
-            cout << endl;
-            cout << "To return to main menu, please type \"return\"." << endl;
-            cin >> retur;
-            while (retur != "return"){
-                cout << "***Invalid input. Please type \"return\" to select.***" << endl;
-                cin >> retur;
-            }
-            if (retur == "return")
-            	return false;
-           
-        }
-        else if (ehealth <=0){
+       
+        if (ehealth <=0){
             cout << "Player defeated enemy!" << endl;
             cout << "Enemy dropped its unique part." << endl;
             cout << "Enemy dropped some golds." << endl;
@@ -292,6 +279,19 @@ bool battleenemy(int x){
 			}
 			cout << endl;
             return true;
+        }
+	else if (pinfo.currentHealth <= 0){
+            cout << "Player died." << endl;
+            cout << endl;
+            cout << "To return to main menu, please type \"return\"." << endl;
+            cin >> retur;
+            while (retur != "return"){
+                cout << "***Invalid input. Please type \"return\" to select.***" << endl;
+                cin >> retur;
+            }
+            if (retur == "return")
+            	return false;
+           
         }
     }
 }
