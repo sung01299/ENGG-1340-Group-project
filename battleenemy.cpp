@@ -4,7 +4,7 @@
 #include "battleenemy.h"
 using namespace std;
 
-void battleenemy(string enemy){
+void battleenemy(){
     int ehealth, eattack, egold;
     string ename;
     if (pinfo.currentLoc == 1){
