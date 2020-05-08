@@ -28,7 +28,6 @@ int main()
         cin >> inputLine;
     }
 
-    PlayerInfo pinfo;
     askingName();
     
     cout << endl << "*You wake up and you see a paper lying on the floor*" << endl << "Type \"read\" to read the paper" << endl;
@@ -45,64 +44,36 @@ int main()
 
     cout << endl << "* While on your way, you encounter the monster, Asaand it suddenly charges on you *" << endl;
 
-
+    
     
     //set player's stat
-    pinfo.maxHealth=100;
-    pinfo.currentHealth=100;
-    pinfo.basicAttack=20;
+    pinfo.maxHealth=150;
+    pinfo.currentHealth=150;
+    pinfo.basicAttack=45;
     pinfo.invenGold=0;
     pinfo.currentLoc=1;
-    
     
     EnemyInfo firstboss;
     EnemyInfo secondboss;
     EnemyInfo thirdboss;
     EnemyInfo finalboss;
     
-    firstboss.ename="Asq";
-    firstboss.ehealth=200;
-    firstboss.eattack=15;
-    firstboss.egold=300;
     
-    secondboss.ename="Patel";
-    secondboss.ehealth=400;
-    secondboss.eattack=20;
-    secondboss.egold=600;
-    
-    thirdboss.ename="Majav";
-    thirdboss.ehealth=600;
-    thirdboss.eattack=50;
-    thirdboss.egold=900;
-   
-    finalboss.ename="Karagon";
-    finalboss.ehealth=800;
-    finalboss.eattack=80;
-    finalboss.egold=0;
-    
-    
-    ItemInfo -----;
-    
-    SkillInfo sinfo;
-    sinfo.damage=1.5*pinfo.basicAttack;
-        
-    battleenemy();
+    battleenemy(1);
     tradeandupgrade();
     pinfo.currentLoc+=1;
     
-    battleenemy();
+    battleenemy(2);
     tradeandupgrade();
     pinfo.currentLoc+=1;
     
-    battleenemy();
+    battleenemy(3);
     tradeandupgrade();
     pinfo.currentLoc+=1;
     
-    battleenemy();
+    battleenemy(4);
     
-    
-    
-    
+    cout << "Congratulations!! You defeated every monsters!!!" << endl;
 
     return 0;
 }
