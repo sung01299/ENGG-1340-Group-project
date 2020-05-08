@@ -57,9 +57,29 @@ int main()
     
     EnemyInfo firstboss;
     EnemyInfo secondboss;
-    EnemyInfo tirdboss;
-    EnemyInfo fourthboss;
+    EnemyInfo thirdboss;
     EnemyInfo finalboss;
+    
+    firstboss.ename="Asq";
+    firstboss.ehealth=200;
+    firstboss.eattack=15;
+    firstboss.egold=300;
+    
+    secondboss.ename="Patel";
+    secondboss.ehealth=400;
+    secondboss.eattack=20;
+    secondboss.egold=600;
+    
+    thirdboss.ename="Majav";
+    thirdboss.ehealth=600;
+    thirdboss.eattack=50;
+    thirdboss.egold=900;
+   
+    finalboss.ename="Karagon";
+    finalboss.ehealth=800;
+    finalboss.eattack=80;
+    finalboss.egold=0;
+    
     
     ItemInfo -----;
     
