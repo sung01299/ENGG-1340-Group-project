@@ -9,8 +9,8 @@
 #include "trade.h"
 using namespace std;
 
-void decreasemapsize(int bossnum){
-    mapsize.resize(5-bossnum);
+void decreasemapsize(int pinfo.currentLoc){
+    mapsize.resize(5-pinfo.currentLoc);
 }
 
 int main()
@@ -73,17 +73,16 @@ int main()
     
     SkillInfo ------;
         
-    int bossnum=1;
     
     for (int k=0; k<4; k++){
-        battleenemy(bossnum);
-        trade(bossnum);
-        decreasemapsize(bossnum);
-        bossnum+=1;
+        battleenemy(pinfo.currentLoc);
+        trade(pinfo.currentLoc);
+        decreasemapsize(pinfo.currentLoc);
+        pinfo.currentLoc+=1;
         
     if (decreasemapsize.size() == 0){
         cout << Fight with final boss left << endl;
-        battleenemy(finalboss);
+        battleenemy(pinfo.currentLoc);
         if (//player wins){
             cout << congratulations! you defeated evey bosses! << endl;
     
