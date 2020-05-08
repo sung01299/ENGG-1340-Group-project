@@ -60,7 +60,7 @@ int main()
     pinfo.currentHealth=100;
     pinfo.basicAttack=20;
     pinfo.invenGold=0;
-    pinfo.currentLoc=0;
+    pinfo.currentLoc=1;
     
     
     EnemyInfo firstboss;
