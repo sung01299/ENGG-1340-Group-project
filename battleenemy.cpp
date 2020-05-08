@@ -5,12 +5,36 @@
 using namespace std;
 
 void battleenemy(string enemy){
+    if (pinfo.currentLoc == 1){
+        string ename = firstboss.ename;
+        int ehealth = firstboss.ehealth;
+        int eattack = firstboss.eattack;
+        int egold = firstboss.egold;
+    }
+    else if (pinfo.currentLoc == 2){
+        string ename = secondboss.ename;
+        int ehealth = secondboss.ehealth;
+        int eattack = secondboss.eattack;
+        int egold = secondboss.egold;
+    }
+    else if (pinfo.currentLoc == 3){
+        string ename = thirdboss.ename;
+        int ehealth = thirdboss.ehealth;
+        int eattack = thirdboss.eattack;
+        int egold = thirdboss.egold;
+    }
+    else if (pinfo.currentLoc == 4){
+        string ename = finalboss.ename;
+        int ehealth = finalboss.ehealth;
+        int eattack = finalboss.eattack;
+        int egold = finalboss.egold;
+    }
     srand(time(NULL));
     int answer, missrate, critrate;
     string retur;
     missrate = 5;
     critrate = 5;
-    while (pinfo.maxHealth > 0 && enemy.ehealth > 0){
+    while (pinfo.maxHealth > 0 && ehealth > 0){
         cout << "To use basic attack, please type \"0\", to use skill, please type \"1\"." << endl;
         cin >> answer;
         while (answer != "0" && answer != "1"){
@@ -24,24 +48,24 @@ void battleenemy(string enemy){
             else {
                 if (rand()%100<=critrate){
                     cout << "Player deals critical hit!" << endl;
-                    enemy.ehealth -= (2*pinfo.basicAttack);
+                    ehealth -= (2*pinfo.basicAttack);
                 }
                 else {
                     cout << "Player basic attacks enemy" << endl;
-                    enemy.ehealth -= pinfo.basicAttack;
+                    ehealth -= pinfo.basicAttack;
                 }
             }
-            cout << "Enemy health remaining: " << enemy.ehealth << endl;
+            cout << "Enemy health remaining: " << ehealth << endl;
             cout << "Enemy attacks player" << endl;
-            pinfo.maxHealth -= enemy.eattack;
+            pinfo.maxHealth -= eattack;
             cout << "Player health remaining: " << pinfo.maxHealth << endl;
         }
         else if (answer == "1"){ 
             cout << "Player uses skill to enemy" << endl;
-            enemy.ehealth -= sinfo.damage;
-            cout << "Enemy health remaining: " << enemy.ehealth << endl;
+            ehealth -= sinfo.damage;
+            cout << "Enemy health remaining: " << ehealth << endl;
             cout << "Enemy attacks player" << endl;
-            pinfo.maxHealth -= enemy.eattack;
+            pinfo.maxHealth -= eattack;
             cout << "Player health remaining: " << pinfo.maxHealth << endl;
         }
         
@@ -57,7 +81,7 @@ void battleenemy(string enemy){
                 //code to return main menu
             }
         }
-        else if (enemy.ehealth <=0){
+        else if (ehealth <=0){
             cout << "Player defeated enemy." << endl;
             cout << "Enemy dropped its unique part" << endl;
             
