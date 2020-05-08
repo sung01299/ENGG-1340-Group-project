@@ -5,29 +5,31 @@
 using namespace std;
 
 void battleenemy(string enemy){
+    int ehealth, eattack, egold;
+    string ename;
     if (pinfo.currentLoc == 1){
-        string ename = firstboss.ename;
-        int ehealth = firstboss.ehealth;
-        int eattack = firstboss.eattack;
-        int egold = firstboss.egold;
+        ename = firstboss.ename;
+        ehealth = firstboss.ehealth;
+        eattack = firstboss.eattack;
+        egold = firstboss.egold;
     }
     else if (pinfo.currentLoc == 2){
-        string ename = secondboss.ename;
-        int ehealth = secondboss.ehealth;
-        int eattack = secondboss.eattack;
-        int egold = secondboss.egold;
+        ename = secondboss.ename;
+        ehealth = secondboss.ehealth;
+        eattack = secondboss.eattack;
+        egold = secondboss.egold;
     }
     else if (pinfo.currentLoc == 3){
-        string ename = thirdboss.ename;
-        int ehealth = thirdboss.ehealth;
-        int eattack = thirdboss.eattack;
-        int egold = thirdboss.egold;
+        ename = thirdboss.ename;
+        ehealth = thirdboss.ehealth;
+        eattack = thirdboss.eattack;
+        egold = thirdboss.egold;
     }
     else if (pinfo.currentLoc == 4){
-        string ename = finalboss.ename;
-        int ehealth = finalboss.ehealth;
-        int eattack = finalboss.eattack;
-        int egold = finalboss.egold;
+        ename = finalboss.ename;
+        ehealth = finalboss.ehealth;
+        eattack = finalboss.eattack;
+        egold = finalboss.egold;
     }
     srand(time(NULL));
     int answer, missrate, critrate;
@@ -37,11 +39,11 @@ void battleenemy(string enemy){
     while (pinfo.maxHealth > 0 && ehealth > 0){
         cout << "To use basic attack, please type \"0\", to use skill, please type \"1\"." << endl;
         cin >> answer;
-        while (answer != "0" && answer != "1"){
+        while (answer != 0 && answer != 1){
             cout << "***Invalid input. Please type \"0\" or \"1\" to select.***" << endl;
             cin >> answer;
         }
-        if (answer == "0"){
+        if (answer == 0){
             if (rand()%100<=missrate){
                 cout << "Player misses basic attack!" << endl;
             }
@@ -60,7 +62,7 @@ void battleenemy(string enemy){
             pinfo.maxHealth -= eattack;
             cout << "Player health remaining: " << pinfo.maxHealth << endl;
         }
-        else if (answer == "1"){ 
+        else if (answer == 1){ 
             cout << "Player uses skill to enemy" << endl;
             ehealth -= sinfo.damage;
             cout << "Enemy health remaining: " << ehealth << endl;
