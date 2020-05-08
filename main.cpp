@@ -69,7 +69,6 @@ int main()
     for (int k=0; k<4; k++){
         battleenemy(pinfo.currentLoc);
         trade(pinfo.currentLoc);
-        decreasemapsize(pinfo.currentLoc);
         pinfo.currentLoc+=1;
         
     if (pinto.currentLoc == 5){
