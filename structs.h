@@ -30,7 +30,7 @@ struct PlayerInfo {
 struct EnemyInfo {
     string ename;
     int ehealth;
-    int edefense;
+    int eattack;
     int egold;
 };
 
