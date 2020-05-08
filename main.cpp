@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <string>
+#include <vector>
 #include "structs.h"
 #include "name.h"
 #include "battleenemy.h"
