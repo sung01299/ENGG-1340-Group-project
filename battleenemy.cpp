@@ -61,7 +61,6 @@ void battleenemy(int pinfo.currentLoc){
             cout << "Enemy dropped its unique part" << endl;
             
             cout << "Player can now move on to next town." << endl;
-            pinfo.currentLoc+=1;
         }
     }
 }
