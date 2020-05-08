@@ -15,19 +15,19 @@ void battleenemy(){
         eattack = firstboss.eattack;
         egold = firstboss.egold;
     }
-    else if (pinfo.currentLoc == 2){
+    else if (pinfo.currentLoc == 3){
         ename = secondboss.ename;
         ehealth = secondboss.ehealth;
         eattack = secondboss.eattack;
         egold = secondboss.egold;
     }
-    else if (pinfo.currentLoc == 3){
+    else if (pinfo.currentLoc == 5){
         ename = thirdboss.ename;
         ehealth = thirdboss.ehealth;
         eattack = thirdboss.eattack;
         egold = thirdboss.egold;
     }
-    else if (pinfo.currentLoc == 4){
+    else if (pinfo.currentLoc == 7){
         ename = finalboss.ename;
         ehealth = finalboss.ehealth;
         eattack = finalboss.eattack;
