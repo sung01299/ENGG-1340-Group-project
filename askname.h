@@ -1,6 +1,3 @@
-#ifndef NAME_H
-#define NAME_H
-
 #ifndef ASKNAME_H
 #define ASKNAME_H
 
@@ -85,7 +82,5 @@ string askingName() {
 
     return name;
 }
-
-#endif
 
 #endif
