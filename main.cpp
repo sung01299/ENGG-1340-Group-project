@@ -37,6 +37,10 @@ int main()
        variable answer stores the choice (e.g. 1/0) from the player */
     string inputLine;
     PlayerInfo pinfo;
+    EnemyInfo firstboss;
+    EnemyInfo secondboss;
+    EnemyInfo thirdboss;
+    EnemyInfo finalboss;
 
     /* Main start menu */
     cout << "~~~~~~~~~~ MYSTERIOUS YYETNAL ~~~~~~~~~~" << endl;
@@ -110,9 +114,9 @@ int main()
         if (pinfo.currentLoc == 1) {
             cout << "* While on your way, you encounter the monster, Asa and it suddenly charges on you *" << endl;
 
-            battleenemy(1);
+            if (battleenemy(1) == false) {
+            }
 
-            cout << "You have defeated Asa and obtained " << endl;
             cout << "Type \"continue\" to continue or \"save\" to save and quit the game" << endl;
             cin >> inputLine;
 
@@ -224,13 +228,6 @@ int main()
         }
         fout.close();
     }
-    
-    //stats
-    EnemyInfo firstboss;
-    EnemyInfo secondboss;
-    EnemyInfo thirdboss;
-    EnemyInfo finalboss;
-    
     
     return 0;
 }
