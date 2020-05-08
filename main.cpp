@@ -16,7 +16,7 @@ void decreasemapsize(int bossnum){
 int main()
 {
     vector<int> mapsize;
-    for (int i=5; i<=1; i--){
+    for (int i=4; i<=1; i--){
         mapsize.push_back(i);
     }
     /* variable inputline stores the input from the user
@@ -67,7 +67,6 @@ int main()
     EnemyInfo secondboss;
     EnemyInfo tirdboss;
     EnemyInfo fourthboss;
-    EnemyInfo fifthboss;
     EnemyInfo finalboss;
     
     ItemInfo -----;
@@ -76,7 +75,7 @@ int main()
         
     int bossnum=1;
     
-    for (int k=0; k<5; k++){
+    for (int k=0; k<4; k++){
         battleenemy(bossnum);
         trade(bossnum);
         decreasemapsize(bossnum);
