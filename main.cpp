@@ -67,13 +67,13 @@ int main()
         
     
     for (int k=0; k<4; k++){
-        battleenemy(pinfo.currentLoc);
+        battleenemy(name of monster);
         trade(pinfo.currentLoc);
         pinfo.currentLoc+=1;
         
     if (pinto.currentLoc == 5){
         cout << Fight with final boss left << endl;
-        battleenemy(pinfo.currentLoc);
+        battleenemy(name of monster);
         if (//player wins){
             cout << congratulations! you defeated evey bosses! << endl;
     
