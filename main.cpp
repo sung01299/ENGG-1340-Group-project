@@ -72,7 +72,6 @@ int main()
         pinfo.currentHealth = 150;
         pinfo.basicAttack = 45;
         pinfo.invenGold = 0;
-        pinfo.currentLoc = 1;
 
         cout << "*You take your sword and leave the house*" << endl;
         cout << "*Your journey to the town of Aran starts*" << endl;
@@ -111,7 +110,7 @@ int main()
         if (pinfo.currentLoc == 1) {
             cout << "* While on your way, you encounter the monster, Asa and it suddenly charges on you *" << endl;
 
-            //battleenemy();
+            battleenemy(1);
 
             cout << "You have defeated Asa and obtained " << endl;
             cout << "Type \"continue\" to continue or \"save\" to save and quit the game" << endl;
@@ -133,7 +132,7 @@ int main()
         else if (pinfo.currentLoc == 3) {
             cout << "* While on your way, you encounter bandit Patel *" << endl;
             cout << endl << "Patel: Where are you going, little kid? Now, give me all you have!" << endl;
-            if (battleenemy() == false) {}
+            if (battleenemy(3) == false) {}
             pinfo.currentLoc = 4;
         }
 
@@ -148,7 +147,7 @@ int main()
         }
 
         else if (pinfo.currentLoc == 5) {
-            if (battleenemy() == false) {}
+            if (battleenemy(5) == false) {}
             pinfo.currentLoc = 6;
         }
 
@@ -162,7 +161,7 @@ int main()
         }
 
         else if (pinfo.currentLoc == 7) {
-            if (battleenemy() == false) {}
+            if (battleenemy(7) == false) {}
             pinfo.currentLoc = 8;
 
             cout << "You have defeated the final guardian of the sword Karagon." << endl;
@@ -232,20 +231,6 @@ int main()
     EnemyInfo thirdboss;
     EnemyInfo finalboss;
     
-    
-    battleenemy(1);
-    tradeandupgrade();
-    pinfo.currentLoc+=1;
-    
-    battleenemy(2);
-    tradeandupgrade();
-    pinfo.currentLoc+=1;
-    
-    battleenemy(3);
-    tradeandupgrade();
-    pinfo.currentLoc+=1;
-    
-    battleenemy(4);
     
     return 0;
 }
