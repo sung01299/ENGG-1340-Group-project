@@ -4,17 +4,23 @@ using namespace std;
 
 void tradeandupgrade(int pinfo.currentLoc){
     int answer0, answer1, answer2, answer3;
+    vector<string> names;
     cout << "Player can trade the unique parts or upgrade weapon and armor." << endl;
     cout << "To trade the unique parts with gold, type \"1\", to upgrade weapon, type \"2\", to upgrade armor, type \"3\", to exit, type \"0\"" << endl;
     cin >> answer0;
     while (answer0 != 0){
         if (answer0 == "1"){
-            cout << "You entered trade market." << endl;
-            cout << "You can trade the part obtained from previous battle with " << /*value of monster part*/ << ". To trade, type \"1\"." << endl;
+            cout << "Input numbers of item you would like to sell." << endl;
             cin >> answer1;
-            if (answer1 == "1"){
-                pinfo.invenGold += partvalue;
-                cout << "Player currently has " << pinfo.invenGold << " gold." << endl;
+            string name;
+            cout << "List the name of items that you would like to sell." << endl;
+            for (int i=0; i<answer1; i++){
+                cin >> name
+                names[i]=name;
+            }
+            for (int i=0; i<names.size(); i++){
+                cout << "Player successfully traded " << names[i] << " with " << value of names[i] << " gold." << endl;
+                pinfo.invenGold += value of names[i];
             }
         }
         else if (answer0 == "2"){
