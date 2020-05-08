@@ -4,12 +4,12 @@
 #include "battleenemy.h"
 using namespace std;
 
-void battleenemy(int pinfo.currentLoc){
+void battleenemy(string enemy){
     srand(time(NULL));
     int answer, retur, missrate, critrate;
     missrate = 5;
     critrate = 5;
-    while (pinfo.maxHealth > 0 && einfo.ehealth > 0){
+    while (pinfo.maxHealth > 0 && enemy.ehealth > 0){
         cout << "To use basic attack, please type \"0\", to use skill, please type \"1\"." << endl;
         cin >> answer;
         while (answer != "0" && answer != "1"){
@@ -23,24 +23,24 @@ void battleenemy(int pinfo.currentLoc){
             else {
                 if (rand()%100<=critrate){
                     cout << "Player deals critical hit!" << endl;
-                    einfo.ehealth -= (2*pinfo.basicAttack);
+                    enemy.ehealth -= (2*pinfo.basicAttack);
                 }
                 else {
                     cout << "Player basic attacks enemy" << endl;
-                    einfo.ehealth -= pinfo.basicAttack;
+                    enemy.ehealth -= pinfo.basicAttack;
                 }
             }
-            cout << "Enemy health remaining: " << einfo.ehealth << endl;
+            cout << "Enemy health remaining: " << enemy.ehealth << endl;
             cout << "Enemy attacks player" << endl;
-            pinfo.maxHealth -= einfo.eattack;
+            pinfo.maxHealth -= enemy.eattack;
             cout << "Player health remaining: " << pinfo.maxHealth << endl;
         }
         else if (answer == "1"){ 
             cout << "Player uses skill to enemy" << endl;
-            einfo.ehealth -= sinfo.damage;
-            cout << "Enemy health remaining: " << einfo.ehealth << endl;
+            enemy.ehealth -= sinfo.damage;
+            cout << "Enemy health remaining: " << enemy.ehealth << endl;
             cout << "Enemy attacks player" << endl;
-            pinfo.maxHealth -= einfo.eattack;
+            pinfo.maxHealth -= enemy.eattack;
             cout << "Player health remaining: " << pinfo.maxHealth << endl;
         }
         
@@ -56,7 +56,7 @@ void battleenemy(int pinfo.currentLoc){
                 //code to return main menu
             }
         }
-        else if (einfo.ehealth <=0){
+        else if (enemy.ehealth <=0){
             cout << "Player defeated enemy." << endl;
             cout << "Enemy dropped its unique part" << endl;
             
