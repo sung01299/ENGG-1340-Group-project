@@ -4,7 +4,7 @@
 #include "battleenemy.h"
 using namespace std;
 
-void battleenemy(//enemy#){
+void battleenemy(int pinfo.currentLoc){
     srand(time(NULL));
     int answer, retur, missrate, critrate;
     missrate = 5;
