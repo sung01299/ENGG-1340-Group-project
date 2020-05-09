@@ -4,69 +4,71 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include "structs.h"
+#include "presskey.h"
 using namespace std;
 
-bool battleenemy(int x, int &maxHealth, int basicAttack, int &invenGold) {
-	pinfo.currentHealth = pinfo.maxHealth;
-	firstboss.ename="Asq";
-    firstboss.ehealth=300;
-    firstboss.eattack=15;
-    firstboss.egold=300;
+bool battleenemy(int x, int &maxHealth, int basicAttack, int &invenGold, int inven[]){
+    int currentHealth = maxHealth;
+    EnemyInfo firstboss;
+    EnemyInfo secondboss;
+    EnemyInfo thirdboss;
+    EnemyInfo finalboss;
+
+	firstboss.ename = "Asa";
+    firstboss.ehealth = 300;
+    firstboss.eattack = 15;
+    firstboss.egold = 300;
     
-    secondboss.ename="Patel";
-    secondboss.ehealth=450;
-    secondboss.eattack=30;
-    secondboss.egold=600;
+    secondboss.ename = "Patel";
+    secondboss.ehealth = 450;
+    secondboss.eattack = 30;
+    secondboss.egold = 600;
     
-    thirdboss.ename="Majav";
-    thirdboss.ehealth=600;
-    thirdboss.eattack=50;
-    thirdboss.egold=900;
+    thirdboss.ename = "Majav";
+    thirdboss.ehealth = 600;
+    thirdboss.eattack = 50;
+    thirdboss.egold = 900;
    
-    finalboss.ename="Karagon";
-    finalboss.ehealth=1000;
-    finalboss.eattack=80;
-    finalboss.egold=0;
+    finalboss.ename = "Karagon";
+    finalboss.ehealth = 1000;
+    finalboss.eattack = 80;
+    finalboss.egold = 0;
     
-  	int ehealth, eattack, egold;
-  	string ename;
+  int ehealth, eattack, egold;
+  string ename;
     if (x == 1){
         ename = firstboss.ename;
         ehealth = firstboss.ehealth;
         eattack = firstboss.eattack;
         egold = firstboss.egold;
     }
-    else if (x == 2){
+    else if (x == 3){
         ename = secondboss.ename;
         ehealth = secondboss.ehealth;
         eattack = secondboss.eattack;
         egold = secondboss.egold;
     }
-    else if (x == 3){
+    else if (x == 5){
         ename = thirdboss.ename;
         ehealth = thirdboss.ehealth;
         eattack = thirdboss.eattack;
         egold = thirdboss.egold;
     }
-    else if (x == 4){
+    else if (x == 7){
         ename = finalboss.ename;
         ehealth = finalboss.ehealth;
         eattack = finalboss.eattack;
         egold = finalboss.egold;
     }
-	
+
     srand(time(NULL));
     int answer, missrate, critrate, maxskilluse;
     string retur;
     missrate = 15;
     critrate = 15;
-	if (pinfo.currentLoc == 1){
-		maxskilluse=0;
-	}
-	else{
-		maxskilluse=2;
-	}
-	
+    maxskilluse = 2;
+    
     cout << "Enemy Information: " << endl;
     cout << "Name: " << ename << endl;
     cout << "Health: " << ehealth << endl;
@@ -74,142 +76,145 @@ bool battleenemy(int x, int &maxHealth, int basicAttack, int &invenGold) {
     cout << endl;
     
     cout << "Player Information: " << endl;
-    cout << "Health: " << pinfo.maxHealth << endl;
-    cout << "Attack damage: " << pinfo.basicAttack << endl;
-    cout << "Skill damage: " << 1.5*pinfo.basicAttack << endl;
+    cout << "Health: " << maxHealth << endl;
+    cout << "Attack damage: " << basicAttack << endl;
+    cout << "Skill damage: " << 1.5*basicAttack << endl;
+    cout << "Special skill available: " << maxskilluse << endl;
     cout << endl;
-    while (pinfo.currentHealth > 0 && ehealth > 0){
-        cout << "To use basic attack, please type \"0\", to use skill, please type \"1\", to use potion, please type \"2\"." << endl;
+
+    while (maxHealth > 0 && ehealth > 0){
+        cout << "To use basic attack, please type \"0\", to use special skill, please type \"1\", please type \"2\" to use health potion." << endl;
         cin >> answer;
         cout << endl;
         while (answer != 0 && answer != 1 && answer != 2){
-            cout << "***Invalid input. Please type \"0\", \"1\", or \"2\" to select.***" << endl;
+            cout << "*** Invalid input. Please type \"0\" to do basic attack, \"1\" to use special skill, or \"2\" to use health potion. ***" << endl;
             cin >> answer;
             cout << endl;
         }
         if (answer == 0){
-            if (rand()%100<=missrate){
-                cout << "Player misses basic attack!" << endl;
+            if (rand()%100 <= missrate) {
+                cout << "You missed your basic attack!" << endl;
             }
             else {
                 if (rand()%100<=critrate){
-                    cout << "Player deals critical hit!" << endl;
-                    ehealth -= (2*pinfo.basicAttack);
+                    cout << "You dealt a critical hit!" << endl;
+                    ehealth -= (2*basicAttack);
                 }
                 else {
-                    cout << "Player basic attacks enemy" << endl;
-                    ehealth -= pinfo.basicAttack;
+                    cout << "You basic attacked " << ename << endl;
+                    ehealth -= basicAttack;
                 }
             }
-            cout << "Enemy health remaining: " << ehealth << endl;
-            cout << "Enemy attacks player" << endl;
-            pinfo.currentHealth -= eattack;
-            cout << "Player health remaining: " << pinfo.currentHealth << endl;
-            cout << "Player skill remaining: " << maxskilluse << endl;
+            cout << ename << " health remaining: " << ehealth << endl;
+            cout << ename << " attacked you" << endl << endl;
+            currentHealth -= eattack;
+            cout << "Your health remaining: " << currentHealth << endl;
+            cout << "Your special skill remaining: " << maxskilluse << endl;
             cout << endl;
         }
-        else if (answer == 1){
-			if (pinfo.currentLoc == 1){
-				cout << "You have not acquired skill yet! You can only basic attack." << endl;
-				if (rand()%100<=missrate){
-                cout << "Player misses basic attack!" << endl;
+        else if (answer == 1){ 
+        	if (maxskilluse >= 1){
+            	cout << "You used special skill to " << ename << "!" << endl;
+            	ehealth -= 3*basicAttack;
+            	cout << ename << " health remaining: " << ehealth << endl << endl;
+            	cout << ename << " attacked you!" << endl;
+            	currentHealth -= eattack;
+              	maxskilluse-=1;
+            	cout << "Your health remaining: " << currentHealth << endl;
+            	cout << "Your special skill remaining: " << maxskilluse << endl;
+            	cout << endl;
+            }
+            else {
+            	cout << "No more energy to use your special skill! You can only basic attack now." << endl;
+            	if (rand()%100<=missrate){
+                cout << "You missed your basic attack!" << endl;
             	}
             	else {
                 	if (rand()%100<=critrate){
-                    	cout << "Player deals critical hit!" << endl;
-                    	ehealth -= (2*pinfo.basicAttack);
+                    	cout << "You dealt critical hit!" << endl;
+                    	ehealth -= (2*basicAttack);
                 	}
                 	else {
-                    	cout << "Player basic attacks enemy" << endl;
-                    	ehealth -= pinfo.basicAttack;
+                    	cout << "You basic attacked " << ename << endl;
+                    	ehealth -= basicAttack;
                 	}
             	}
-			}
-			else {
-        		if (maxskilluse >= 1){
-            		cout << "Player uses skill to enemy" << endl;
-            		ehealth -= 3*pinfo.basicAttack;
-            		cout << "Enemy health remaining: " << ehealth << endl;
-            		cout << "Enemy attacks player" << endl;
-            		pinfo.currentHealth -= eattack;
-              		maxskilluse-=1;
-            		cout << "Player health remaining: " << pinfo.currentHealth << endl;
-            		cout << "Player skill remaining: " << maxskilluse << endl;
-            		cout << endl;
-            	}
-            	else {
-            		cout << "No more energy to use skill! You can only basic attack." << endl;
-            		if (rand()%100<=missrate){
-                		cout << "Player misses basic attack!" << endl;
-            		}
-            		else {
-                		if (rand()%100<=critrate){
-                    		cout << "Player deals critical hit!" << endl;
-                    		ehealth -= (2*pinfo.basicAttack);
-                		}
-                		else {
-                    		cout << "Player basic attacks enemy" << endl;
-                    		ehealth -= pinfo.basicAttack;
-                		}
-            		}
-				}
-			}
-			else if (answer == 2){
-				int count=0;
-				for (int i=0; i<5; i++){
-					if (pinfo.inven[i] != 0){
-						count+=1;
-					}
-				}
-				if (count >=1){
-					cout << "You used potion, hp increased by 100." << endl;
-					pinfo.currentHealth += 100;
-					cout << "Potion remaining: " << count-1 << endl;
-					for (int i=0; i<5; i++){
-						if (pinfo.inven[i] != 0){
-							pinfo.inven[i]=0;
-							break;
-						}
-					}
-				}
-				else {
-					cout << "You have no more potion left." << endl;
-			}
-            	cout << "Enemy health remaining: " << ehealth << endl;
-            	cout << "Enemy attacks player" << endl;
-            	pinfo.currentHealth -= eattack;
-            	cout << "Player health remaining: " << pinfo.currentHealth << endl;
-            	cout << "Player skill remaining: " << maxskilluse << endl;
+                if (ehealth > 0) {
+                    cout << ename << " health remaining: " << ehealth << endl;
+                }
+                else {
+                    cout << ename << " health remaining: 0" << ehealth << endl << endl;
+                }
+            	cout << ename << " attacked you" << endl;
+            	currentHealth -= eattack;
+            	cout << "Your health remaining: " << currentHealth << endl;
+            	cout << "Your skill remaining: " << maxskilluse << endl;
             	cout << endl;
-				}    
-        	}
+			}    
+        }
+        else if (answer == 2) {
+            if (currentHealth == maxHealth) {
+                cout << "Your health is already full!" << endl << endl;
+            }
+            else {
+                int count = 0;
+                for (int i = 0; i < 5; i++) {
+                    if (inven[i] != 0) {
+                        count += 1;
+                    }
+                }
+                if (count >= 1) {
+                    currentHealth += 100;
+                    if (currentHealth > maxHealth) {
+                        cout << "You use potion, health increased by " << maxHealth - (currentHealth - 100) << "." << endl;
+                        currentHealth = maxHealth;
+                    }
+                    else {
+                        cout << "You used potion, health increased by 100." << endl;
+                    }
+                    cout << "Your current heath is: " << currentHealth << endl;
+                    cout << "Potions remaining: " << count - 1 << endl << endl;
+                    for (int i = 0; i < 5; i++) {
+                        if (inven[i] != 0) {
+                            inven[i] = 0;
+                            break;
+                        }
+                    }
+                }
+                else {
+                    cout << "You have no more potions left." << endl;
+                }
+            }
+        }
         
-        if (pinfo.currentHealth <= 0){
-            cout << "Player died." << endl;
+        if (currentHealth <= 0){
+            cout << "You have died." << endl;
             cout << endl;
-            cout << "To return to main menu, please type \"return\"." << endl;
+            cout << "To return to last save point, please type \"return\"." << endl;
             cin >> retur;
+            system("clear");
             while (retur != "return"){
-                cout << "***Invalid input. Please type \"return\" to select.***" << endl;
+                cout << "*** Invalid input. Please type \"return\" to select ***" << endl;
                 cin >> retur;
+                system("clear");
             }
             if (retur == "return")
             	return false;
-           
         }
         else if (ehealth <=0){
-            cout << "Player defeated enemy!" << endl;
-            cout << "Enemy dropped its unique part." << endl;
-            cout << "Enemy dropped some golds." << endl;
-            pinfo.invenGold+=egold;
+            cout << "You have defeated " << ename << "!" << endl;
+            cout << ename << " dropped its unique part." << endl;
+            cout << ename << " dropped some golds." << endl;
+            invenGold += egold;
             string part;
             part="Part from "+ename;
             inventory.push_back(part);
-            cout << "Player currently have " << pinfo.invenGold << " golds." << endl;
+            cout << "You now have " << invenGold << " golds." << endl;
             if (x != 4){
-				cout << "Player can now move on to next town." << endl;
+				cout << "You continue your journey and you enter a town." << endl;
+                presskey();
+                system("clear");
 			}
-			cout << endl;
             return true;
         }
     }
