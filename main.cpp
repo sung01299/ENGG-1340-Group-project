@@ -30,8 +30,9 @@ void printTown() {
 
 // This function would save the game data using ofstream
 // The inputs are player's name, player's health, basic attack, amount of gold player has,
-// the current location of player, and the inventory array of the player.
-void autosave(string pname, int maxHealth, int basicAttack, int invenGold, int currentLoc, int inven[]) {
+// the current location of player, and the inventory array of the player,
+// vector which stores parts gotten from monsters.
+void autosave(string pname, int maxHealth, int basicAttack, int invenGold, int currentLoc, int inven[], vector<string> inventory) {
     cout << "Game saved!" << endl;
 
     ofstream fout;
@@ -40,6 +41,17 @@ void autosave(string pname, int maxHealth, int basicAttack, int invenGold, int c
     fout << pname << " " << maxHealth << " " << basicAttack << " " << invenGold << " " << currentLoc << " ";
     for (int i = 0; i < 5; i++) {
         fout << inven[i] << " ";
+    }
+    for (int i = 0; i < inventory.size(); i++) {
+        if (inventory[i] == "Part from Asa") {
+            fout << 1 << " ";
+        }
+        else if (inventory[i] == "Part from Patel") {
+            fout << 2 << " ";
+        }
+        else if (inventory[i] == "Part from Mejav") {
+            fout << 3 << " ";
+        }
     }
     fout.close();
 }
@@ -128,15 +140,29 @@ int main()
         }
 
         pinfo.currentLoc = 1;
-        autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+        autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven, inventory);
     }
     else {
         cout << "Saved file found..." << endl;
         cout << "Loading game..." << endl;
         cout << "Game loaded!" << endl;
+        // loades information of player (name, health, attack damage, golds, and location,
+        // inventory array of player, and vector of parts gotten from monsters.
         fin >> pinfo.pname >> pinfo.maxHealth >> pinfo.basicAttack >> pinfo.invenGold >> pinfo.currentLoc;
         for (int i = 0; i < 5; i++) {
             fin >> pinfo.inven[i];
+        }
+        int inventor;
+        while (fin >> inventor) {
+            if (inventor == 1) {
+                inventory.push_back("Part from Asa");
+            }
+            else if (inventor == 2) {
+                inventory.push_back("Part from Patel");
+            }
+            else if (inventor == 3) {
+                inventory.push_back("Part from Mejav");
+            }
         }
         fin.close();
         cout << endl << "Work it, " << pinfo.pname << "! You got this!" << endl;
@@ -162,7 +188,7 @@ int main()
                 }
                 else {
                     pinfo.currentLoc = 2;
-                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven, inventory);
                 }
             }
 
@@ -173,7 +199,7 @@ int main()
                 tradeandupgrade(pinfo.currentLoc, pinfo.invenGold, pinfo.basicAttack, pinfo.maxHealth, pinfo.inven);
                 cout << pinfo.maxHealth << endl;
                 cout << pinfo.basicAttack << endl;
-                autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven, inventory);
                 pinfo.currentLoc = 3;
             }
 
@@ -186,7 +212,7 @@ int main()
                 }
                 else {
                     pinfo.currentLoc = 4;
-                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven, inventory);
                 }
             }
 
@@ -195,7 +221,7 @@ int main()
                 cout << "\"You are now in the town of Terra\"" << endl;
                 printTown();
                 tradeandupgrade(pinfo.currentLoc, pinfo.invenGold, pinfo.basicAttack, pinfo.maxHealth, pinfo.inven);
-                autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven, inventory);
                 pinfo.currentLoc = 5;
             }
 
@@ -209,7 +235,7 @@ int main()
                 }
                 else {
                     pinfo.currentLoc = 6;
-                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven, inventory);
                 }
             }
 
@@ -218,7 +244,7 @@ int main()
                 cout << "\"You are now in the town of Aran\"" << endl;
                 printTown();
                 tradeandupgrade(pinfo.currentLoc, pinfo.invenGold, pinfo.basicAttack, pinfo.maxHealth, pinfo.inven);
-                autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven, inventory);
                 pinfo.currentLoc = 7;
             }
 
