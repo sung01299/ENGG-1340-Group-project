@@ -64,7 +64,7 @@ void tradeandupgrade(int currentLoc, int &invenGold, int &basicAttack, int &maxH
 
                             cout << "You successfully traded " << inventory[number - 1] << " for 200 golds." << endl;
                             invenGold += 200;
-                            inventory.erase(inventory.begin() + i + 1);
+                            inventory.erase(inventory.begin() + number - 1);
                             cout << "You now have " << invenGold << " golds." << endl;
                             presskey();
                             system("clear");
