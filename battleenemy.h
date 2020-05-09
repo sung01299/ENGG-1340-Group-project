@@ -6,7 +6,7 @@
 #include <ctime>
 using namespace std;
 
-bool battleenemy(int x){
+bool battleenemy(int x, int &maxHealth, int basicAttack, int &invenGold) {
 	pinfo.currentHealth = pinfo.maxHealth;
 	firstboss.ename="Asq";
     firstboss.ehealth=300;
@@ -28,8 +28,8 @@ bool battleenemy(int x){
     finalboss.eattack=80;
     finalboss.egold=0;
     
-  int ehealth, eattack, egold;
-  string ename;
+  	int ehealth, eattack, egold;
+  	string ename;
     if (x == 1){
         ename = firstboss.ename;
         ehealth = firstboss.ehealth;
@@ -54,6 +54,7 @@ bool battleenemy(int x){
         eattack = finalboss.eattack;
         egold = finalboss.egold;
     }
+	
     srand(time(NULL));
     int answer, missrate, critrate, maxskilluse;
     string retur;
