@@ -89,6 +89,7 @@ int main()
     // Otherwise, it will read the data from the savefile.txt and put them into respective variables
     ifstream fin;
     fin.open("savefile.txt");
+    // This is if there is no savefile.
     if (fin.fail()) {
         cout << "Thank you for playing Yyetnal!" << endl;
         cout << "Enjoy your adventure!" << endl;
@@ -142,6 +143,11 @@ int main()
         pinfo.currentLoc = 1;
         autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven, inventory);
     }
+    // This is if there is savefile.
+    // This loads save file if it exists.
+    // The inputs are player's name, player's health, basic attack, amount of gold player has,
+    // the current location of player, and the inventory array of the player,
+    // vector which stores parts gotten from monsters.
     else {
         cout << "Saved file found..." << endl;
         cout << "Loading game..." << endl;
@@ -152,6 +158,9 @@ int main()
         for (int i = 0; i < 5; i++) {
             fin >> pinfo.inven[i];
         }
+        // In the savefile.txt, for the vector section, 1 stands for part from Asa, 2 stands for part from Patel,
+        // and 3 stands for part from Mejav. Each number push back corresponding element into the vector,
+        // so the vector storing parts from monsters can be used in the game again same as the previous gameplay.
         int inventor;
         while (fin >> inventor) {
             if (inventor == 1) {
@@ -274,7 +283,8 @@ int main()
                 cout << "Karagon: NOBODY HAS LEFT THIS PLACE ALIVE AND SO WILL YOU!" << endl;
                 presskey();
                 system("clear");
-
+               
+                // Battle with final guardian
                 battleenemy(7, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.inven);
                 pinfo.currentLoc = 8;
 
@@ -293,7 +303,7 @@ int main()
                     cin >> inputLine;
                     system("clear");
                 }
-
+                // This prints the ending story and credits of the game.
                 cout << "  /\\ " << endl;
                 cout << "  || " << endl;
                 cout << "  || " << endl;
