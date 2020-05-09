@@ -206,8 +206,6 @@ int main()
                 cout << "\"You are now in the town of Tanook\"" << endl;
                 printTown();
                 tradeandupgrade(pinfo.currentLoc, pinfo.invenGold, pinfo.basicAttack, pinfo.maxHealth, pinfo.inven);
-                cout << pinfo.maxHealth << endl;
-                cout << pinfo.basicAttack << endl;
                 autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven, inventory);
                 pinfo.currentLoc = 3;
             }
