@@ -19,19 +19,26 @@ void tradeandupgrade(){
             		for (int i=0; i<inventory.size(); i++){
             			cout << i+1 << ". " << inventory[i] << endl;
             		}
-            		cout << "List the number of item that you would like to sell." << endl;
-            		cin >> number;
-            		cout << "Player successfully traded " << inventory[number-1] << " with 200 golds." << endl;
-            		pinfo.invenGold += 200;
-            		inventory.erase(inventory.begin());
-            		cout << "You currently have " << pinfo.invenGold << " Golds." << endl;
+            		cout << "How many numbers of item you would like to sell?" << endl;
+            		cin >> num;
             		cout << endl;
+            		if (num >= 1){
+            		for (int i=0; i<num; i++){
+            			cout << "List the number of item that you would like to sell." << endl;
+            			cin >> number;
+            			cout << "Player successfully traded " << inventory[number-1] << " with 200 golds." << endl;
+            			pinfo.invenGold += 200;
+            			inventory.erase(inventory.begin()+i+1);
+            			cout << "You currently have " << pinfo.invenGold << " Golds." << endl;
+            		}
+            		cout << endl;
+            		}
 				}
-				else{
-					cout << "Nothing to sell in your inventory" << endl;
-					cout << endl;
-				}
+			else{
+				cout << "Nothing to sell in your inventory" << endl;
+				cout << endl;
 			}
+		}
 
             cout << "To trade the unique parts with gold, type \"1\", to upgrade weapon, type \"2\", to upgrade armor, type \"3\", to exit, type \"0\"" << endl;
             cin >> answer0;
