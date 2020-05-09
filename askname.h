@@ -1,3 +1,5 @@
+// This header file includes the function askingName().
+
 #ifndef ASKNAME_H
 #define ASKNAME_H
 
@@ -6,6 +8,9 @@
 #include <stdlib.h>
 using namespace std;
 
+// The function is used ask the name of the player and prints the introduction of the game.
+// The function returns a string value which is the final name of the player.
+// No input is needed.
 string askingName() {
     /* Getting name from the player */
     string name, answer;
