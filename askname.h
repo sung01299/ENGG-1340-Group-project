@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include <stdlib.h>
-#include "askname.h"
 using namespace std;
 
 string askingName() {
@@ -12,19 +11,19 @@ string askingName() {
     string name, answer;
     cout << "Please enter your name: ";
     cin >> name;
-    system("CLS");
+    system("clear");
 
     cout << "????: Hello, " << name << "." << endl;
     cout << "1 - How do you know me? Who are you?" << endl << "0 - That is not my name." << endl;
     cout << "Type \"1\" or \"0\" to select." << endl;
     cin >> answer;
-    system("CLS");
+    system("clear");
 
     /* If the player inputs an invalid input, it will ask the player to input again */
     while (answer != "1" && answer != "0") {
         cout << "***Invalid input. Please type \"1\" or \"0\" to select.***" << endl;
         cin >> answer;
-        system("CLS");
+        system("clear");
     }
 
     /* If the player answers "2", it will ask the player to enter their name again.*/
@@ -32,16 +31,16 @@ string askingName() {
         cout << "????: Then may I ask what your name is?" << endl;
         cout << "Please enter your name: ";
         cin >> name;
-        system("CLS");
+        system("clear");
         cout << "????: Is " << name << " your name?" << endl << "Type \"1\" for yes or \"0\" for no." << endl;
         cin >> answer;
-        system("CLS");
+        system("clear");
 
         /* If the player inputs an invalid input, it will ask the player to input a valid input (i.e., 1 or 0) again */
         while (answer != "1" && answer != "0") {
             cout << "***Invalid input. Please type \"1\" or \"0\" to answer.***" << endl;
             cin >> answer;
-            system("CLS");
+            system("clear");
         }
 
         /* If the input name is still not what the player wants, the player can input it again until the player is satisfied. */
@@ -50,16 +49,16 @@ string askingName() {
                 cout << "????: May I ask again what your name is?" << endl;
                 cout << "Please enter your name: ";
                 cin >> name;
-                system("CLS");
+                system("clear");
                 cout << "????: Is " << name << " your name?" << endl << "Type \"1\" for yes or \"0\" for no." << endl;
                 cin >> answer;
-                system("CLS");
+                system("clear");
 
                 /* If the player inputs an invalid input, it will ask the player to input a valid input (i.e., 1 or 0) again */
                 while (answer != "1" && answer != "0") {
                     cout << "***Invalid input. Please type \"1\" or \"0\" to answer.***" << endl;
                     cin >> answer;
-                    system("CLS");
+                    system("clear");
                 }
                 if (answer == "1") {
                     cout << "????: Great!" << endl;
