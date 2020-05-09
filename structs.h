@@ -10,12 +10,10 @@ vector<string> inventory;
 /* This struct is used to store player's information
     pname for player's name
     maxHealth for player's health
-    basicAttack for the basic amount of damage the player can deal;
-    pdefense for player's current health
+    basicAttack for the basic amount of damage the player can deal
     invenGold for amound of gold the player has
     currentLoc for current location of the player
-    inven for player's inventory and the maximum number of items the player can hold is 5
-    obtainedSkill for the skills the player has and the maximum number of skills players can use*/
+    inven for player's inventory and the maximum number of items the player can hold is 5 */
 struct PlayerInfo {
     string pname;
     int maxHealth;
