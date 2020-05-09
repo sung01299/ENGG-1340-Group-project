@@ -10,7 +10,6 @@ vector<string> inventory;
 /* This struct is used to store player's information
     pname for player's name
     maxHealth for player's health
-    currentHealth for player's current health
     basicAttack for the basic amount of damage the player can deal;
     pdefense for player's current health
     invenGold for amound of gold the player has
@@ -20,7 +19,6 @@ vector<string> inventory;
 struct PlayerInfo {
     string pname;
     int maxHealth;
-    int currentHealth;
     int basicAttack;
     int invenGold;
     int currentLoc;
@@ -37,28 +35,6 @@ struct EnemyInfo {
     int ehealth;
     int eattack;
     int egold;
-};
-
-/* This struct is used to store item information
-    itemID for ID of the item
-    itemName for name of the item
-    itemPrice for price of the item */
-struct ItemInfo {
-    string itemID;
-    string itemName;
-    int itemPrice;
-};
-
-/* This struct is used to store skill information
-    skillID for ID of the skill
-    skillName for name of the skill
-    damage for the amount of damage the skill can deal
-    maxTimes for the number of times the skill could be used */
-struct SkillInfo {
-    string skillID;
-    string skillName;
-    int damage;
-    int maxTimes;
 };
 
 #endif
