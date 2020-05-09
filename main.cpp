@@ -1,5 +1,3 @@
-/* main.cpp */
-
 #include <iostream>
 #include <fstream>
 /* <fstream> is used for reading and writing files */
@@ -21,6 +19,7 @@
 using namespace std;
 
 // This function would print an ASCII art of a town
+// No input is needed
 void printTown() {
     cout << "              /\\" << endl;
     cout << "    ///\\     ||||" << endl;
@@ -29,13 +28,16 @@ void printTown() {
     cout << "___|||___|_|_|_[]_|_|_|_[]_||_[]_|___" << endl << endl;
 }
 
-void autosave(string pname, int maxHealth, int currentHealth, int basicAttack, int invenGold, int currentLoc, int inven[]) {
+// This function would save the game data using ofstream
+// The inputs are player's name, player's health, basic attack, amount of gold player has,
+// the current location of player, and the inventory array of the player.
+void autosave(string pname, int maxHealth, int basicAttack, int invenGold, int currentLoc, int inven[]) {
     cout << "Game saved!" << endl;
 
     ofstream fout;
     fout.open("savefile.txt");
 
-    fout << pname << " " << maxHealth << " " << currentHealth << " " << basicAttack << " " << invenGold << " " << currentLoc << " ";
+    fout << pname << " " << maxHealth << " " << basicAttack << " " << invenGold << " " << currentLoc << " ";
     for (int i = 0; i < 5; i++) {
         fout << inven[i] << " ";
     }
@@ -68,6 +70,11 @@ int main()
         system("clear");
     }
 
+    // The program will check if there is a savefile
+    // If it fails to find a file called savefile.txt,
+    // It is the player's first time playing this game and will ask for player's name
+    // and player stats will be set to the basic one.
+    // Otherwise, it will read the data from the savefile.txt and put them into respective variables
     ifstream fin;
     fin.open("savefile.txt");
     if (fin.fail()) {
@@ -76,13 +83,13 @@ int main()
 
         // Starting player stats
         pinfo.maxHealth = 150;
-        pinfo.currentHealth = 150;
         pinfo.basicAttack = 45;
         pinfo.invenGold = 0;
         for (int i = 0; i < 5; i++) {
             pinfo.inven[i] = 0;
         }
 
+        // The program will ask for player's chacracter name and will be stored in pinfo.pname
         pinfo.pname = askingName();
         presskey();
         system("clear");
@@ -91,6 +98,7 @@ int main()
         cin >> inputLine;
         system("clear");
 
+        // Check whether the input is valid
         while (inputLine != "read") {
             cout << "***Invalid input. Please type \"read\" to read the paper.***" << endl;
             cin >> inputLine;
@@ -112,6 +120,7 @@ int main()
         cin >> inputLine;
         system("clear");
 
+        // Check whether the input is valid
         while (inputLine != "continue" && inputLine != "quit") {
             cout << "***Invalid input. Please type \"continue\" to continue or \"quit\" to quit the game." << endl;
             cin >> inputLine;
@@ -119,13 +128,13 @@ int main()
         }
 
         pinfo.currentLoc = 1;
-        autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+        autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
     }
     else {
         cout << "Saved file found..." << endl;
         cout << "Loading game..." << endl;
         cout << "Game loaded!" << endl;
-        fin >> pinfo.pname >> pinfo.maxHealth >> pinfo.currentHealth >> pinfo.basicAttack >> pinfo.invenGold >> pinfo.currentLoc;
+        fin >> pinfo.pname >> pinfo.maxHealth >> pinfo.basicAttack >> pinfo.invenGold >> pinfo.currentLoc;
         for (int i = 0; i < 5; i++) {
             fin >> pinfo.inven[i];
         }
@@ -135,6 +144,7 @@ int main()
         cin >> inputLine;
         system("clear");
 
+        // Check whether the input is valid
         while (inputLine != "continue") {
             cout << "***Invalid input. Please type \"continue\" to continue" << endl;
             cin >> inputLine;
@@ -143,66 +153,76 @@ int main()
     }
     while (dead == false) {
         while (inputLine != "quit" && dead == false) {
+            
+            // If currentLoc is 1, the player will have to face the monster Asa
             if (pinfo.currentLoc == 1) {
                 cout << "* While on your way, you encounter the monster, Asa and it suddenly charges on you *" << endl;
-                if (battleenemy(1, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.inven) == false) {
+                if (battleenemy(1, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.inven) == false) {
                     dead = true;
                 }
                 else {
                     pinfo.currentLoc = 2;
-                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
                 }
             }
 
+            // If the currentLoc is 2, the player will be in the town of Tanook
             else if (pinfo.currentLoc == 2) {
                 cout << "\"You are now in the town of Tanook\"" << endl;
                 printTown();
                 tradeandupgrade(pinfo.currentLoc, pinfo.invenGold, pinfo.basicAttack, pinfo.maxHealth, pinfo.inven);
-                autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                cout << pinfo.maxHealth << endl;
+                cout << pinfo.basicAttack << endl;
+                autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
                 pinfo.currentLoc = 3;
             }
 
+            // If the currentLoc is 3, the player will be facing bandit Patel
             else if (pinfo.currentLoc == 3) {
                 cout << "* While on your way, you encounter bandit Patel *" << endl;
                 cout << endl << "Patel: Where are you going, little kid? Now, give me all you have!" << endl << endl;
-                if (battleenemy(3, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.inven) == false) {
+                if (battleenemy(3, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.inven) == false) {
                     dead = true;
                 }
                 else {
                     pinfo.currentLoc = 4;
-                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
                 }
             }
 
+            // If the currentLoc is 4, the player will be in the Town of Terra
             else if (pinfo.currentLoc == 4) {
                 cout << "\"You are now in the town of Terra\"" << endl;
                 printTown();
                 tradeandupgrade(pinfo.currentLoc, pinfo.invenGold, pinfo.basicAttack, pinfo.maxHealth, pinfo.inven);
-                autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
                 pinfo.currentLoc = 5;
             }
 
+            // If the currentLoc is 5, the player will be against royal soldier, Majav
             else if (pinfo.currentLoc == 5) {
                 cout << "* While on your way, you encounter royal soldier, Majav *" << endl;
                 cout << endl << "Majav: Where do you think, you're going? This place is off-limit for peasants like you." << endl;
                 cout << "Majav: You shall fight me to pass this place!" << endl << endl;
-                if (battleenemy(5, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.inven) == false) {
+                if (battleenemy(5, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.inven) == false) {
                     dead = true;
                 }
                 else {
                     pinfo.currentLoc = 6;
-                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
                 }
             }
 
+            // If the currentLoc is 6, the player will be in the town of Aran
             else if (pinfo.currentLoc == 6) {
                 cout << "\"You are now in the town of Aran\"" << endl;
                 printTown();
                 tradeandupgrade(pinfo.currentLoc, pinfo.invenGold, pinfo.basicAttack, pinfo.maxHealth, pinfo.inven);
-                autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                autosave(pinfo.pname, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
                 pinfo.currentLoc = 7;
             }
 
+            // If the currentLoc is 7, the player will be against Karagon, the final boss
             else if (pinfo.currentLoc == 7) {
                 cout << "After passing the town of Aran, you find a mysterious stone path leading to somewhere deep in the mountains..." << endl;
                 cout << "After walking for some time, you hear an old man..." << endl;
@@ -229,7 +249,7 @@ int main()
                 presskey();
                 system("clear");
 
-                battleenemy(7, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.inven);
+                battleenemy(7, pinfo.maxHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.inven);
                 pinfo.currentLoc = 8;
 
                 cout << "You have defeated the final guardian of the sword Karagon." << endl;
@@ -241,6 +261,7 @@ int main()
                 cin >> inputLine;
                 system("clear");
 
+                // Check whether the input is valid
                 while (inputLine != "unlock") {
                     cout << "*** Invalid input. Please type \"unlock\" to unlock the door to the sword ***" << endl;
                     cin >> inputLine;
@@ -273,6 +294,7 @@ int main()
                 cin >> inputLine;
                 system("clear");
 
+                // Check whether the input is valid
                 while (inputLine != "exit") {
                     cout << "*** Invalid input. Please type \"exit\" to exit ***" << endl;
                     cin >> inputLine;
@@ -287,6 +309,7 @@ int main()
                 system("clear");
             }
 
+            // Check whether the input is valid
             while (inputLine != "continue" && inputLine != "quit") {
                 cout << "***Invalid input. Please type \"continue\" to continue or \"quit\" to quit the game." << endl;
                 cin >> inputLine;
