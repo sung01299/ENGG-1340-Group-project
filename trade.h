@@ -6,7 +6,6 @@
 #include <iostream>
 #include <cstdlib>
 #include <stdlib.h>
-#include <ctime>
 #include <string>
 #include <vector>
 #include "presskey.h"
