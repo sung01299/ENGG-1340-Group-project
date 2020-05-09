@@ -33,7 +33,7 @@ During each battle, the player can choose to basic attack or use special skill w
    - Sample inputs have not been included. Even though the same data has been input, the result of the game will be different due to the randomness during battles. 
    - We have included checks for invalid data. So if the player enters invalid data, the game will ask the player to input again until the input is valid.
    - The input requirements are stated explicitly in the game.
-      - (e.g. Type "continue to continue) Then the player is expected to type "continue".
+      - (e.g. Type "continue" to continue) Then the player is expected to type "continue".
 
 ## Compilation and execution
    - A Makefile is included in this porject.
