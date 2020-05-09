@@ -9,13 +9,13 @@ using namespace std;
 bool battleenemy(int x){
 	pinfo.currentHealth = pinfo.maxHealth;
 	firstboss.ename="Asq";
-    firstboss.ehealth=200;
+    firstboss.ehealth=300;
     firstboss.eattack=15;
     firstboss.egold=300;
     
     secondboss.ename="Patel";
-    secondboss.ehealth=400;
-    secondboss.eattack=20;
+    secondboss.ehealth=450;
+    secondboss.eattack=30;
     secondboss.egold=600;
     
     thirdboss.ename="Majav";
@@ -24,7 +24,7 @@ bool battleenemy(int x){
     thirdboss.egold=900;
    
     finalboss.ename="Karagon";
-    finalboss.ehealth=800;
+    finalboss.ehealth=1000;
     finalboss.eattack=80;
     finalboss.egold=0;
     
@@ -57,10 +57,15 @@ bool battleenemy(int x){
     srand(time(NULL));
     int answer, missrate, critrate, maxskilluse;
     string retur;
-    missrate = 10;
-    critrate = 10;
-    maxskilluse=3;
-    
+    missrate = 15;
+    critrate = 15;
+	if (pinfo.currentLoc == 1){
+		maxskilluse=0;
+	}
+	else{
+		maxskilluse=2;
+	}
+	
     cout << "Enemy Information: " << endl;
     cout << "Name: " << ename << endl;
     cout << "Health: " << ehealth << endl;
@@ -102,21 +107,10 @@ bool battleenemy(int x){
             cout << "Player skill remaining: " << maxskilluse << endl;
             cout << endl;
         }
-        else if (answer == 1){ 
-        	if (maxskilluse >= 1){
-            	cout << "Player uses skill to enemy" << endl;
-            	ehealth -= 3*pinfo.basicAttack;
-            	cout << "Enemy health remaining: " << ehealth << endl;
-            	cout << "Enemy attacks player" << endl;
-            	pinfo.currentHealth -= eattack;
-              	maxskilluse-=1;
-            	cout << "Player health remaining: " << pinfo.currentHealth << endl;
-            	cout << "Player skill remaining: " << maxskilluse << endl;
-            	cout << endl;
-            }
-            else {
-            	cout << "No more energy to use skill! You can only basic attack." << endl;
-            	if (rand()%100<=missrate){
+        else if (answer == 1){
+			if (pinfo.currentLoc == 1){
+				cout << "You have not acquired skill yet! You can only basic attack." << endl;
+				if (rand()%100<=missrate){
                 cout << "Player misses basic attack!" << endl;
             	}
             	else {
@@ -129,14 +123,44 @@ bool battleenemy(int x){
                     	ehealth -= pinfo.basicAttack;
                 	}
             	}
+			}
+			else {
+        		if (maxskilluse >= 1){
+            		cout << "Player uses skill to enemy" << endl;
+            		ehealth -= 3*pinfo.basicAttack;
+            		cout << "Enemy health remaining: " << ehealth << endl;
+            		cout << "Enemy attacks player" << endl;
+            		pinfo.currentHealth -= eattack;
+              		maxskilluse-=1;
+            		cout << "Player health remaining: " << pinfo.currentHealth << endl;
+            		cout << "Player skill remaining: " << maxskilluse << endl;
+            		cout << endl;
+            	}
+            	else {
+            		cout << "No more energy to use skill! You can only basic attack." << endl;
+            		if (rand()%100<=missrate){
+                		cout << "Player misses basic attack!" << endl;
+            		}
+            		else {
+                		if (rand()%100<=critrate){
+                    		cout << "Player deals critical hit!" << endl;
+                    		ehealth -= (2*pinfo.basicAttack);
+                		}
+                		else {
+                    		cout << "Player basic attacks enemy" << endl;
+                    		ehealth -= pinfo.basicAttack;
+                		}
+            		}
+				}
+			}
             	cout << "Enemy health remaining: " << ehealth << endl;
             	cout << "Enemy attacks player" << endl;
             	pinfo.currentHealth -= eattack;
             	cout << "Player health remaining: " << pinfo.currentHealth << endl;
             	cout << "Player skill remaining: " << maxskilluse << endl;
             	cout << endl;
-			}    
-        }
+				}    
+        	}
         
         if (pinfo.currentHealth <= 0){
             cout << "Player died." << endl;
