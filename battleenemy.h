@@ -170,7 +170,7 @@ bool battleenemy(int x, int maxHealth, int basicAttack, int &invenGold, int inve
             // and instead do basic attack
         	if (maxskilluse >= 1){
             	cout << "You used special skill to " << ename << "!" << endl;
-            	ehealth -= 3*basicAttack;
+            	ehealth -= 1.5*basicAttack;
             	cout << ename << " health remaining: " << ehealth << endl << endl;
                 if (ehealth > 0) {
                     cout << ename << " attacked you" << endl << endl;
