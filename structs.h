@@ -1,6 +1,10 @@
 #ifndef STRUCTS_H
 #define STRUCTS_H 
 
+#include <vector>
+#include <string>
+using namespace std;
+
 vector<string> inventory;
 
 /* This struct is used to store player's information
@@ -20,10 +24,10 @@ struct PlayerInfo {
     int basicAttack;
     int invenGold;
     int currentLoc;
-} pinfo;
+    int inven[5];
+};
 
-
-/* This struct is used to store enemy information 
+/* This struct is used to store enemy information
     ename for enemy's name
     ehealth for enemy's health
     edefense for enemy's defense
@@ -33,5 +37,28 @@ struct EnemyInfo {
     int ehealth;
     int eattack;
     int egold;
-} firstboss, secondboss, thirdboss, finalboss;
+};
+
+/* This struct is used to store item information
+    itemID for ID of the item
+    itemName for name of the item
+    itemPrice for price of the item */
+struct ItemInfo {
+    string itemID;
+    string itemName;
+    int itemPrice;
+};
+
+/* This struct is used to store skill information
+    skillID for ID of the skill
+    skillName for name of the skill
+    damage for the amount of damage the skill can deal
+    maxTimes for the number of times the skill could be used */
+struct SkillInfo {
+    string skillID;
+    string skillName;
+    int damage;
+    int maxTimes;
+};
+
 #endif
