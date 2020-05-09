@@ -166,7 +166,7 @@ bool battleenemy(int x, int &maxHealth, int basicAttack, int &invenGold) {
 					pinfo.currentHealth += 100;
 					cout << "Potion remaining: " << count-1 << endl;
 					for (int i=0; i<5; i++){
-						if (pinfo.inven[i] == 0){
+						if (pinfo.inven[i] != 0){
 							pinfo.inven[i]=0;
 							break;
 						}
