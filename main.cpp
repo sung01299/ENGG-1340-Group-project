@@ -29,15 +29,18 @@ void printTown() {
     cout << "___|||___|_|_|_[]_|_|_|_[]_||_[]_|___" << endl << endl;
 }
 
-void autosave(string pname, int maxHealth, int currentHealth, int basicAttack, int invenGold, int currentLoc, int inven[]) {
+void autosave(string pname, int maxHealth, int currentHealth, int basicAttack, int invenGold, int currentLoc, int inven[], vector<string> inventory) {
     cout << "Game saved!" << endl;
 
     ofstream fout;
     fout.open("savefile.txt");
 
-    fout << pname << " " << maxHealth << " " << currentHealth << " " << basicAttack << " " << invenGold << " " << currentLoc << " ";
+    fout << pname << " " << maxHealth << " " << currentHealth << " " << basicAttack << " " << invenGold << " " << currentLoc << " " << inventory;
     for (int i = 0; i < 5; i++) {
         fout << inven[i] << " ";
+    }
+    for (int k=0; k < 5; k++) {
+        fout << inventory[k] << " ";
     }
     fout.close();
 }
@@ -119,7 +122,7 @@ int main()
         }
 
         pinfo.currentLoc = 1;
-        autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+        autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven, inventory);
     }
     else {
         cout << "Saved file found..." << endl;
@@ -128,6 +131,9 @@ int main()
         fin >> pinfo.pname >> pinfo.maxHealth >> pinfo.currentHealth >> pinfo.basicAttack >> pinfo.invenGold >> pinfo.currentLoc;
         for (int i = 0; i < 5; i++) {
             fin >> pinfo.inven[i];
+        }
+        for (int k = 0; k < 5; k++) {
+            fin >> inventory[k];
         }
         fin.close();
         cout << endl << "Work it, " << pinfo.pname << "! You got this!" << endl;
@@ -150,7 +156,7 @@ int main()
                 }
                 else {
                     pinfo.currentLoc = 2;
-                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven, inventory);
                 }
             }
 
@@ -158,7 +164,7 @@ int main()
                 cout << "\"You are now in the town of Tanook\"" << endl;
                 printTown();
                 tradeandupgrade(pinfo.currentLoc, pinfo.invenGold, pinfo.basicAttack, pinfo.maxHealth, pinfo.inven);
-                autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven, inventory);
                 pinfo.currentLoc = 3;
             }
 
@@ -170,7 +176,7 @@ int main()
                 }
                 else {
                     pinfo.currentLoc = 4;
-                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven, inventory);
                 }
             }
 
@@ -178,7 +184,7 @@ int main()
                 cout << "\"You are now in the town of Terra\"" << endl;
                 printTown();
                 tradeandupgrade(pinfo.currentLoc, pinfo.invenGold, pinfo.basicAttack, pinfo.maxHealth, pinfo.inven);
-                autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven, inventory);
                 pinfo.currentLoc = 5;
             }
 
@@ -191,7 +197,7 @@ int main()
                 }
                 else {
                     pinfo.currentLoc = 6;
-                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                    autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven, inventory);
                 }
             }
 
@@ -199,7 +205,7 @@ int main()
                 cout << "\"You are now in the town of Aran\"" << endl;
                 printTown();
                 tradeandupgrade(pinfo.currentLoc, pinfo.invenGold, pinfo.basicAttack, pinfo.maxHealth, pinfo.inven);
-                autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven);
+                autosave(pinfo.pname, pinfo.maxHealth, pinfo.currentHealth, pinfo.basicAttack, pinfo.invenGold, pinfo.currentLoc, pinfo.inven, inventory);
                 pinfo.currentLoc = 7;
             }
 
