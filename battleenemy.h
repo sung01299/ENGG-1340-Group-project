@@ -79,11 +79,11 @@ bool battleenemy(int x, int &maxHealth, int basicAttack, int &invenGold) {
     cout << "Skill damage: " << 1.5*pinfo.basicAttack << endl;
     cout << endl;
     while (pinfo.currentHealth > 0 && ehealth > 0){
-        cout << "To use basic attack, please type \"0\", to use skill, please type \"1\"." << endl;
+        cout << "To use basic attack, please type \"0\", to use skill, please type \"1\", to use potion, please type \"2\"." << endl;
         cin >> answer;
         cout << endl;
-        while (answer != 0 && answer != 1){
-            cout << "***Invalid input. Please type \"0\" or \"1\" to select.***" << endl;
+        while (answer != 0 && answer != 1 && answer != 2){
+            cout << "***Invalid input. Please type \"0\", \"1\", or \"2\" to select.***" << endl;
             cin >> answer;
             cout << endl;
         }
@@ -153,6 +153,27 @@ bool battleenemy(int x, int &maxHealth, int basicAttack, int &invenGold) {
                 		}
             		}
 				}
+			}
+			else if (answer == 2){
+				int count=0;
+				for (int i=0; i<5; i++){
+					if (pinfo.inven[i] != 0){
+						count+=1;
+					}
+				}
+				if (count >=1){
+					cout << "You used potion, hp increased by 100." << endl;
+					pinfo.currentHealth += 100;
+					cout << "Potion remaining: " << count-1 << endl;
+					for (int i=0; i<5; i++){
+						if (pinfo.inven[i] == 0){
+							pinfo.inven[i]=0;
+							break;
+						}
+					}
+				}
+				else {
+					cout << "You have no more potion left." << endl;
 			}
             	cout << "Enemy health remaining: " << ehealth << endl;
             	cout << "Enemy attacks player" << endl;
